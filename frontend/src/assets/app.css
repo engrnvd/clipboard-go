@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.all-center {
+    @apply flex items-center justify-center;
+}
+
+.text-truncate {
+    @apply text-ellipsis whitespace-nowrap overflow-hidden;
+}
