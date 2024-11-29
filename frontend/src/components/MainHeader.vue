@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { env } from '@/src/env'
+import { env } from '../env'
 </script>
 
 <template>
