@@ -19,7 +19,9 @@ function copyText() {
 </script>
 
 <template>
-    <div class="p-4 rounded shadow flex items-center space-x-2 cursor-pointer hover:bg-gray-50" @click="copyText">
+    <div
+        class="px-4 py-2 rounded-lg bg-background shadow flex items-center space-x-2 cursor-pointer hover:bg-green-50"
+        @click="copyText">
         <pre class="flex-grow whitespace-pre-line">{{ text }}</pre>
         <Button @click.stop="items.remove(text)" class="flex-shrink-0" size="icon" variant="ghost">
             <Trash class="text-destructive"/>

@@ -15,20 +15,21 @@ onMounted(() => {
 </script>
 
 <template>
-    <main>
-        <div class="sticky top-0 bg-background shadow">
+    <main class="bg-gray-200 min-h-screen">
+        <div class="sticky top-0 z-10 bg-background shadow">
             <MainHeader/>
             <div class="px-4 py-2">
                 <Search/>
             </div>
         </div>
-        <div class="p-4 flex flex-col space-y-2">
+        <div v-auto-animate class="p-2 flex flex-col space-y-2">
             <ClipboardItem
                 v-for="i in items.queriedData"
                 :key="i"
                 :text="i"
             />
-            <div v-if="!items.data.length" class="text-muted-foreground">Text you copy will appear here.</div>
+            <div key="none" v-if="!items.data.length" class="text-muted-foreground">Text you copy will appear here.
+            </div>
         </div>
         <CopiedToast/>
     </main>

@@ -3,8 +3,10 @@ import { copiedToast } from '@/store/flags'
 </script>
 
 <template>
-    <div v-if="copiedToast.flag.value"
-         class="p-2 opacity-90 text-sm min-w-52 rounded shadow text-center fixed right-4 bottom-4 bg-primary text-background">
-        Copied...
+    <div v-auto-animate class="w-24 h-6 text-xs text-center fixed right-4 bottom-4">
+        <div key="1" v-if="copiedToast.flag.value"
+             class="px-6 py-1 rounded-full opacity-90 shadow bg-foreground text-background">
+            Copied...
+        </div>
     </div>
 </template>
