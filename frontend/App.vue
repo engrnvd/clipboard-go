@@ -18,7 +18,7 @@ onMounted(() => {
     <main class="bg-gray-200 min-h-screen">
         <div class="sticky top-0 z-10 bg-background shadow">
             <MainHeader/>
-            <div class="px-4 py-2">
+            <div class="p-2">
                 <Search/>
             </div>
         </div>
