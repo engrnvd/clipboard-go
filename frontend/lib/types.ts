@@ -1,0 +1,1 @@
+export type AppView = 'circle' | 'full' | 'minimised'

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
 import { copiedToast } from '@/store/flags'
+import { useAppStore } from '@/store/useAppStore'
 import { useItemsStore } from '@/store/useItemsStore'
 import { ClipboardSetText } from '@/wailsjs/runtime'
 import { Trash } from 'lucide-vue-next'
@@ -10,10 +11,15 @@ const props = defineProps<{
 }>()
 
 const items = useItemsStore()
+const app = useAppStore()
 
 function copyText() {
     ClipboardSetText(props.text)
     copiedToast.show()
+
+    if (app.lastView === 'circle') {
+        app.setView('circle')
+    }
 }
 
 </script>
