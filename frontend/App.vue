@@ -15,14 +15,14 @@ onMounted(() => {
 </script>
 
 <template>
-    <main class="bg-gray-200 min-h-screen">
+    <main class="bg-gray-200 h-screen rounded-lg overflow-hidden flex flex-col">
         <div class="sticky top-0 z-10 bg-background shadow">
             <MainHeader/>
             <div class="p-2">
                 <Search/>
             </div>
         </div>
-        <div v-auto-animate class="p-2 flex flex-col space-y-2">
+        <div v-auto-animate class="p-2 flex flex-col space-y-2 flex-grow overflow-y-auto">
             <ClipboardItem
                 v-for="i in items.queriedData"
                 :key="i"
