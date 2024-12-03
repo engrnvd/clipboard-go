@@ -34,6 +34,10 @@ func main() {
 		},
 		Mac: &mac.Options{
 			WebviewIsTransparent: true,
+			About: &mac.AboutInfo{
+				Title:   "ClipboardGo",
+				Message: "Copy Pasting reinvented to boost your productivity. © https://naveed-h.com",
+			},
 		},
 		BackgroundColour: &options.RGBA{R: 0, G: 0, B: 255, A: 0},
 		OnStartup:        app.startup,
