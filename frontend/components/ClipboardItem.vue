@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
+import { ClipBoardItemType } from '@/lib/types'
 import { copiedToast } from '@/store/flags'
 import { useAppStore } from '@/store/useAppStore'
 import { useItemsStore } from '@/store/useItemsStore'
 import { ClipboardSetText } from '@/wailsjs/runtime'
-import { Trash } from 'lucide-vue-next'
+import { PinIcon, PinOffIcon, Trash } from 'lucide-vue-next'
 
 const props = defineProps<{
-    text: string
+    item: ClipBoardItemType
 }>()
 
 const items = useItemsStore()
 const app = useAppStore()
 
 function copyText() {
-    ClipboardSetText(props.text)
+    ClipboardSetText(props.item.text)
     copiedToast.show()
 
     if (app.lastView === 'circle') {
@@ -28,8 +29,12 @@ function copyText() {
     <div
         class="px-4 py-2 rounded-lg bg-background shadow flex items-center space-x-2 cursor-pointer hover:bg-green-50"
         @click="copyText">
-        <pre class="flex-grow whitespace-pre-line">{{ text }}</pre>
-        <Button @click.stop="items.remove(text)" class="flex-shrink-0" size="icon" variant="ghost">
+        <pre class="flex-grow whitespace-pre-line">{{ item.text }}</pre>
+        <Button @click.stop="item.pinned = !item.pinned" class="flex-shrink-0" size="icon" variant="ghost">
+            <PinIcon v-if="!item.pinned"/>
+            <PinOffIcon v-else/>
+        </Button>
+        <Button @click.stop="items.remove(item)" class="flex-shrink-0" size="icon" variant="ghost">
             <Trash class="text-destructive"/>
         </Button>
     </div>

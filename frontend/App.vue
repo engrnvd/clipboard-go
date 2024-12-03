@@ -13,6 +13,7 @@ const items = useItemsStore()
 const app = useAppStore()
 
 onMounted(() => {
+    if (items.length && !items[0].hasOwnProperty('text')) items.clear()
     setInterval(items.update, 1000)
 })
 </script>
@@ -30,7 +31,7 @@ onMounted(() => {
             <ClipboardItem
                 v-for="i in items.queriedData"
                 :key="i"
-                :text="i"
+                :item="i"
             />
             <div key="none" v-if="!items.data.length" class="text-muted-foreground">Text you copy will appear here.
             </div>
