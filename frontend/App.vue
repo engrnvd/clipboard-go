@@ -7,7 +7,6 @@ import Search from '@/components/Search.vue'
 import { useAppStore } from '@/store/useAppStore'
 import { useItemsStore } from '@/store/useItemsStore'
 import { onMounted } from 'vue'
-import { copiedToast } from './store/flags'
 
 const items = useItemsStore()
 const app = useAppStore()
@@ -28,11 +27,11 @@ onMounted(() => {
             </div>
         </div>
         <div v-auto-animate class="p-2 flex flex-col space-y-2 flex-grow overflow-y-auto">
-            <ClipboardItem
-                v-for="i in items.queriedData"
-                :key="i"
-                :item="i"
-            />
+            <template v-for="(item, i) in items.queriedData" :key="item.text">
+                <ClipboardItem :item="item"/>
+                <hr v-if="item.pinned && items.queriedData[i+1] && !items.queriedData[i+1].pinned"
+                    class="border-t-0 border-b border-gray-100 !my-3">
+            </template>
             <div key="none" v-if="!items.data.length" class="text-muted-foreground">Text you copy will appear here.
             </div>
         </div>

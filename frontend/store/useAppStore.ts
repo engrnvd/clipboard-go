@@ -15,7 +15,7 @@ export const useAppStore = defineStore('app', () => {
 
     switch (v) {
       case 'circle':
-        await WindowSetSize(100, 100)
+        await WindowSetSize(56, 56)
         break
       case 'full':
         await WindowSetSize(450, 700)
