@@ -27,9 +27,8 @@ function copyText() {
 
 <template>
     <div
-        class="px-4 py-2 rounded-lg bg-background shadow flex items-center space-x-2 cursor-pointer hover:bg-green-50"
+        class="p-2 rounded-lg bg-background shadow flex items-start space-x-1 cursor-pointer hover:bg-green-50"
         @click="copyText">
-        <pre class="flex-grow whitespace-pre-line">{{ item.text }}</pre>
         <Button @click.stop="item.pinned = !item.pinned" class="flex-shrink-0" size="icon" variant="ghost">
             <PinIcon v-if="!item.pinned"/>
             <PinOffIcon v-else/>
@@ -37,5 +36,6 @@ function copyText() {
         <Button @click.stop="items.remove(item)" class="flex-shrink-0" size="icon" variant="ghost">
             <Trash class="text-destructive"/>
         </Button>
+        <pre class="flex-grow whitespace-pre-line">{{ item.text }}</pre>
     </div>
 </template>
