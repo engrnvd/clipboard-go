@@ -13,7 +13,7 @@ const app = useAppStore()
 
 onMounted(() => {
     if (items.length && !items[0].hasOwnProperty('text')) items.clear()
-    setInterval(items.update, 1000)
+    setInterval(items.update, 2000)
 })
 </script>
 
