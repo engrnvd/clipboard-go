@@ -17,12 +17,10 @@ export const useItemsStore = defineStore('items', () => {
     const clipText = await ClipboardGetText()
     if (clipText && !data.value.find(i => i.text === clipText)) {
       data.value.unshift({ text: clipText, pinned: false })
-      if (data.value.length > 100) {
-        data.value = [
-          ...data.value.filter((i) => i.pinned),
-          ...data.value.filter((i) => !i.pinned).slice(5),
-        ]
-      }
+      data.value = [
+        ...data.value.filter(i => i.pinned),
+        ...data.value.filter(i => !i.pinned).slice(0, 50),
+      ]
     }
   }
 
